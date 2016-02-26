@@ -7,11 +7,11 @@ url: http://bedirtapkan.me
 permalink: /:title/
 
 analytics: 'UA-MYANALYTICS'
-facebook: https://www.facebook.com/bedir.tapkan
-twitter: https://twitter.com/BedirTapkan
-instagram: https://www.instagram.com/bedirtapkan/
-linkedin: https://www.linkedin.com/in/bedirtapkan
-github: https://github.com/BedirT
+facebook: bedir.tapkan
+twitter: BedirTapkan
+instagram: bedirtapkan
+linkedin: bedirtapkan
+github: BedirT
 email: bedir.tapkan.53@gmail.com
 
 exclude: [README.md, Gemfile, Gemfile.lock, node_modules, gulpfile.js, package.json, _site, src, vendor]
