@@ -1,27 +1,29 @@
-<!DOCTYPE html>
+{% strip %}<!DOCTYPE html>
 <html>
-  {% include head.html %}
-  <body>
-    <main>
-      {% include header.html %}
+  <head>
+    {% include head.html %}
 
-      <div class="container">
-        {{ content }}
-      </div>
+    <meta name="robots" content="noindex"> <!--=====  Please remove it ! ! !  ======-->
+    <meta name="googlebot" content="noindex"> <!--=====  Please remove it ! ! !  ======-->
+  </head>
+  <body class="{% if page.bodyclass %}{{ page.bodyclass }}{% endif %}">
 
-      {% include footer.html %}
+    <main class="main-container">
 
-      {% include github-corner.html %}
+        {% include header.html %}
 
-      <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-      <script>
-      $(document).ready(function() {
-        $('.sliding-panel-button,.sliding-panel-fade-screen,.sliding-panel-close').on('click touchstart',function (e) {
-          $('.sliding-panel-content,.sliding-panel-fade-screen').toggleClass('is-visible');
-          e.preventDefault();
-        });
-      });
-      </script>
+        <section class="main-content">
+          {{ content }}
+        </section>
+
+        {% include footer.html %}
+
     </main>
+
+    {% include github-corner.html %}
+
+    <script src="{{ '/js/jquery.min.js' | prepend: site.baseurl }}"></script>
+    <script src="{{ '/js/jekyll-search.min.js' | prepend: site.baseurl }}"></script>
+    <script src="{{ '/js/main.js' | prepend: site.baseurl }}"></script>
   </body>
-</html>
+</html>{% endstrip %}

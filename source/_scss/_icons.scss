@@ -1,33 +1,36 @@
-$icons-family: 'end2end-icons';
-$icons-path: '../fonts/';
-$icon-home: "\e900";
+
+$icon-font-family: 'mugicons';
+$icon-path: '../fonts/';
+
+$icon-category: "\e900";
+$icon-tags: "\e901";
 $icon-comments: "\e902";
 $icon-comment-o: "\e903";
-$icon-comments-o: "\e904";
+$icon-comments-o: "\e905";
 $icon-search: "\e906";
+$icon-star-o: "\e907";
+$icon-heart: "\e908";
 $icon-share: "\e909";
-$icon-google-plus: "\e901";
 $icon-facebook: "\e90a";
 $icon-facebook-rounded: "\e90b";
 $icon-twitter: "\e90c";
 $icon-twitter-rounded: "\e90d";
 $icon-feed: "\e90e";
 $icon-github: "\e90f";
-$icon-linkedin: "\e905";
 
 @font-face {
-  font-family: $icons-family;
-  src:url('#{$icons-path}#{$icons-family}.eot?vs69d0');
-  src:url('#{$icons-path}#{$icons-family}.eot?vs69d0#iefix') format('embedded-opentype'),
-      url('#{$icons-path}#{$icons-family}.ttf?vs69d0') format('truetype'),
-      url('#{$icons-path}#{$icons-family}.woff?vs69d0') format('woff'),
-      url('#{$icons-path}#{$icons-family}.svg?vs69d0#end2end-icons') format('svg');
+  font-family: $icon-font-family;
+  src: url('#{$icon-path}#{$icon-font-family}.eot?pfzr1n');
+  src: url('#{$icon-path}#{$icon-font-family}.eot?pfzr1n#iefix') format('embedded-opentype'),
+       url('#{$icon-path}#{$icon-font-family}.ttf?pfzr1n') format('truetype'),
+       url('#{$icon-path}#{$icon-font-family}.woff?pfzr1n') format('woff'),
+       url('#{$icon-path}#{$icon-font-family}.svg?pfzr1n##{$icon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 .icon {
-  font-family: $icons-family !important;
+  font-family: $icon-font-family;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -38,18 +41,19 @@ $icon-linkedin: "\e905";
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-home:before { content: $icon-home; }
+.icon-category:before { content: $icon-category; }
+.icon-tags:before { content: $icon-tags; }
 .icon-comments:before { content: $icon-comments; }
-.icon-comment-o:before { content: $icon-comment-o; }
 .icon-comments-o:before { content: $icon-comments-o; }
+.icon-comment-o:before { content: $icon-comment-o; }
 .icon-search:before { content: $icon-search; }
+.icon-star-o:before { content: $icon-star-o; }
+.icon-heart:before { content: $icon-heart; }
 .icon-share:before { content: $icon-share; }
-.icon-google-plus:before { content: $icon-google-plus; }
 .icon-facebook:before { content: $icon-facebook; }
 .icon-facebook-rounded:before { content: $icon-facebook-rounded; }
 .icon-twitter:before { content: $icon-twitter; }
 .icon-twitter-rounded:before { content: $icon-twitter-rounded; }
 .icon-feed:before { content: $icon-feed; }
 .icon-github:before { content: $icon-github; }
-.icon-linkedin:before { content: $icon-linkedin; }
 
