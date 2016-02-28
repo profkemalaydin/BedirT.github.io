@@ -7,45 +7,28 @@ permalink: /about/index.html
 img { width: 50%; margin: 0 auto; display: block; }
 </style>
 
+<h3>Who am I</h3>
+
+<p>I am trying to do my best about creativity in my Design's. I always work with my clients , by that I mean in my clients project, neither my client or me, we are not alone. We are together, that is why we should work together for accomplish. I will give them my talent and skills, as long as they include them in these projects. Giving their opinions and their suggestions with mutual respect. That is how I work, I am open for any idea and job offers ( volunteers also ) as long as I'm available. That is who I am, thanks.</p>
+
 ![Profile Image]({{ site.url }}/{{ site.picture }})
-
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
 <h2>Skills</h2>
 
 <ul class="skill-list">
-	<li>HTML - Jade - Haml - Erb</li>
-	<li>Responsive (Mobile First)</li>
-	<li>CSS (Stylus, Sass, Less)</li>
-	<li>Css Frameworks (Bootstrap, Foundation)</li>
-	<li>Javascript (Design Patterns, Testes)</li>
-	<li>NodeJS</li>
-	<li>AngularJS - ReactJS</li>
-	<li>Grunt - Gulp - Yeoman</li>
-	<li>Git</li>
-	<li>PHP</li>
-	<li>Python</li>
-	<li>MySQL - MongoDB</li>
-	<li>Scrum and Kanban</li>
-	<li>TDD e Continuous Integration</li>
-</ul>
 
-<h2>Projects</h2>
+	<li>Adobe Illustrator</li>
+	<li>Adobe Muse</li>
+	<li>Adobe Photoshop</li>
+	<li>Adobe InDesign</li>
+	<li>Logo Design</li>
+	<li>GitHub</li>
+	<li>Swift</li>
+	<li>C</li>
+	<li>Xcode</li>
+	<li>Object Oriented Programming</li>
+	<li>Algorithms</li>
+	<li>Java</li>
+	<li>Unix</li>
 
-<ul>
-	<li><a href="https://github.com/">Lorem Lorem</a></li>
-	<li><a href="https://github.com/">Ipsum Dolor</a></li>
-	<li><a href="https://github.com/">Dolor Lorem</a></li>
 </ul>
