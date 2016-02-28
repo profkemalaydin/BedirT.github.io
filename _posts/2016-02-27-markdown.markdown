@@ -2,7 +2,7 @@
 title: "Machine Learning Basics"
 layout: post
 date: 2016-02-27 18:41
-tag: markdown
+tag: Machine,learning,Supervised,Unsupervised,regression,classification,clustering
 #star: true
 ---
 

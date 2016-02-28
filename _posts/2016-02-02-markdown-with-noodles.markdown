@@ -2,10 +2,10 @@
 title: "Bit Models"
 layout: post
 date: 2016-02-02 14:40
-tag: markdown
+tag: bits,model,bit,models,binary,magnitude,calculation,computing
 #star: true
 ---
-<!--bits,model,bit,models,binary,magnitude,calculation,computing-->
+
 # Bit Models
 
 A bit, short for binary digit, is a binary valued variable. The two possible values are typically written as 1 and 0, or true and false. On a computing chip (processor, memory chip, etc.), they are represented by high and low voltages
