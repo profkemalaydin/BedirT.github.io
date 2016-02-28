@@ -5,224 +5,80 @@ date: 2015-11-24 14:40
 tag: markdown
 #star: true
 ---
+# Bit Models
 
-## Summary:
+A bit, short for binary digit, is a binary valued variable. The two possible values are typically written as 1 and 0, or true and false. On a computing chip (processor, memory chip, etc.), they are represented by high and low voltages
 
-You can pick as item to sse how to apply in markdown.
+Everything in computing is based upon combinations of bits
+bits can be either 1 or 0. Since a single bit can represent only two values, we must group bits together to represent a wider range of numbers.
 
-### Comum Elements
-- [Basic formatting](#basic-formatting)
-- [Headings](#headings)
-- [Lists](#lists)
-- [Paragraph Modifiers](#paragraph-modifiers)
-- [Urls](#urls)
-- [Horizontal Rule](#horizontal-rule)
-- [Images](#images)
-- [Code](#code)
+                        0 0 0 1 0 0 1 1
 
-### Especial Elements
-- [Evidence](#evidence)
-- [Star](#star)
-- [Gist](#gist)
+When bits are grouped, there are a variety of methods for interpreting them collectively. Each method of interpretation is called a bit model.
 
----
+## Magnitude-only Bit Model
 
-## Basic formatting
+The simplest bit model is for nonnegative whole numbers. In this case, each bit represents a nonnegative integer power of 2. The place values of the bits are as follows:
 
-This note **demonstrates** some of what [Markdown][1] is *capable of doing*.
+    example bit value		 0	 0	 0	 1	 0	 0	 1	 1
+    place value             27   26	 25	 24	 23	 22	 21	 20
+    place value (base 10) 	128	 64	 32	 16	 8	 4	 2	 1
 
----
+The total value of the number represented is found by adding up the place values of all the bits. In the example above, the value represented in the 8 bits (1 byte) is 19:
 
-## Headings
+    0 + 0 + 0 + 16 + 0 + 0 + 2 + 1= 19
 
-There are six levels of headings. They correspond with the six levels of HTML headings. You've probably noticed them already in the page. Each level down uses one more hash character.
+Given 8 bits, it is possible to store whole numbers in value up to
 
-# Headings can be small
+    7
+    ∑2i = 28 − 1= 255
+    i=0
 
-## Headings can be small
+or in the range 0 to 255.
 
-### Headings can be small
+The significance of bits can be thought of as which digits most change the number. It is common practice to list bits from highest to lowest, left to right, following the same convention used to write base 10 numbers.
 
-#### Headings can be small
+In general, storing numbers only within the range 0–255 is not terribly useful. Some things do use this range, such as graphical display pixel values, but obviously a wider range is needed for most computations. This is accomplished by grouping more bits together. For example, by grouping 4 bytes (32 bits) together, the magnitude-only bit model can represent whole numbers in value up to
 
-{% highlight raw %}
-# Heading
-## Heading
-### Heading
-#### Heading
-{% endhighlight %}
 
----
+    31
+    ∑ 2i = 232 − 1= 4,294,967,295
+    i=0
 
-## Lists
+or in the range 0–4,294,967,295.
 
-### Ordered list
+In C, several data types use the magnitude-only bit model. An unsigned char is a 1-byte (8 bits) variable with a range of 0 to 255. On a 32-bit system, an unsigned int is a 4-byte (32 bits) variable with a range of 0 to 4,294,967,295, and an unsigned short int is a 2-byte (16 bits) variable with a range of 0 to 65,535. Technically, the C language does not define the size of an int.
 
-1. Item 1
-2. A second item
-3. Number 3
+## Sign-Magnitude Bit Model
 
-{% highlight raw %}
-1. Item 1
-2. A second item
-3. Number 3
-{% endhighlight %}
+In the case where signed whole numbers are desired, a common practice is to allocate the highest order bit to be the sign bit. This is called the sign-magnitude model:
 
-### Unordered list
+    example bit value            1      0 	0 	1 	0 	0 	1 	1
+    place value			        sign 	26	25	24	23	22	21	20 
+    place value (base 10) 	   + or − 	64	32 	16 	8 	4	2	1
 
-* An item
-* Another item
-* Yet another item
-* And there's more...
+By common convention, a value of 0 in the sign bit indicates a positive number, while a value of 1 in the sign bit indicates a negative number.
 
-{% highlight raw %}
-* An item
-* Another item
-* Yet another item
-* And there's more...
-{% endhighlight %}
+The sign-magnitude model suffers from two drawbacks. First, notice that there are two possible bit values for zero: 00000000 can be interpreted as “positive zero,” while 10000000 is interpreted as “negative zero.” This does not make much sense. Even more important, using this bit model makes binary addition somewhat complicated. If we have zero or two negative numbers, we can perform addition exactly as outlined for the magnitude-only bit model. However, if we have one negative number and one positive number, we must instead perform a subtraction.While subtraction is not a terribly difficult task, it would be nice if we could use the same method for binary addition regardless of the signs of the two numbers. Because of these two drawbacks, no data types in C use the sign-magnitude bit model.
 
----
+## Two’s Complement Bit Model
 
-## Paragraph modifiers
+Using the two’s complement bit model, positive integers (and zero) are represented exactly the same as they are in the magnitude-only bit model. Negative numbers are represented by applying the following sequence of steps: 
+1. Write the bits for the positive version of the number. 
+2. Invert (flip) all the bits. 
+3. Add 1.
 
-### Quote
 
-> Here is a quote. What this is should be self explanatory. Quotes are automatically indented when they are used.
+For example, to represent −7, we proceed through the following steps:
 
-{% highlight raw %}
-> Here is a quote. What this is should be self explanatory.
-{% endhighlight raw %}
+    positive value(+7)		0 	0	0	0	0 	1 	1 	1
+    invert all bits 		1	1 	1 	1 	1	0	0	0
+    add 1                   1 	1 	1	1	1 	0 	0	1
 
----
+The process of adding 1 is carried out exactly as described in the previous sections. Based on our example, we find that the two’s complement bit representation for −7, using 8 bits, is 11111001. When a two’s complement number has a 1 in the highest bit, it indicates that the number is negative. To find the value, we perform the same steps:
 
-## URLs
+    unknown value (+?)		1 	1	1	1	1 	0 	0 	1
+    invert all bits 		0	0 	0 	0 	0	1	1	0
+    add 1                   0 	0 	0	0	0 	1 	1	1
 
-URLs can be made in a handful of ways:
-
-* A named link to [MarkItDown][3].
-* Another named link to [MarkItDown](http://markitdown.net/)
-* Sometimes you just want a URL like <http://markitdown.net/>.
-
-{% highlight raw %}
-* A named link to [MarkItDown][3].
-* Another named link to [MarkItDown](http://markitdown.net/)
-* Sometimes you just want a URL like <http://markitdown.net/>.
-{% endhighlight %}
-
----
-
-## Horizontal rule
-
-A horizontal rule is a line that goes across the middle of the page.
-It's sometimes handy for breaking things up.
-
-{% highlight raw %}
----
-{% endhighlight %}
-
----
-
-## Images
-
-Markdown can also contain images. I'll need to add something here sometime.
-
-![Markdowm Image][6]
-
-{% highlight raw %}
-![Markdowm Image][http://kune.fr/wp-content/uploads/2013/10/ghost-blog.jpg]
-{% endhighlight %}
-
----
-
-## Code
-
-A HTML Example:
-
-{% highlight html %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Just a test</h1>
-</body>
-</html>
-{% endhighlight %}
-
-A CSS Example:
-
-{% highlight css %}
-pre {
-    padding: 10px;
-    font-size: .8em;
-    white-space: pre;
-}
-
-pre, table {
-    width: 100%;
-}
-
-code, pre, tt {
-    font-family: Monaco, Consolas, Inconsolata, monospace, sans-serif;
-    background: rgba(0,0,0,.05);
-}
-{% endhighlight %}
-
-A JS Example:
-
-{% highlight js %}
-// Sticky Header
-$(window).scroll(function() {
-
-    if ($(window).scrollTop() > 900 && !$("body").hasClass('show-menu')) {
-        $('#hamburguer__open').fadeOut('fast');
-    } else if (!$("body").hasClass('show-menu')) {
-        $('#hamburguer__open').fadeIn('fast');
-    }
-
-});
-{% endhighlight %}
-
----
-
-## Evidence
-
-You can try the evidence!
-
-<span class="evidence">Paragraphs can be written like so. A paragraph is the basic block of Markdown. A paragraph is what text will turn into when there is no reason it should become anything else.</span>
-
-{% highlight html %}
-<span class="evidence">Paragraphs can be written like so. A paragraph is the basic block of Markdown. A paragraph is what text will turn into when there is no reason it should become anything else.</span>
-{% endhighlight %}
-
----
-
-## Star
-
-You can star a post. Just add the tag to the markdown file.
-
-{% highlight raw %}
-star: true
-{% endhighlight %}
-
----
-
-## Gist
-
-You can add Gists from github.
-
-{% highlight raw %}
-{ % gist sergiokopplin/f393ac99fdb2d123e9f6 % }
-{% endhighlight %}
-
-{% gist sergiokopplin/f393ac99fdb2d123e9f6 %}
-
-[1]: http://daringfireball.net/projects/markdown/
-[2]: http://www.fileformat.info/info/unicode/char/2163/index.htm
-[3]: http://www.markitdown.net/
-[4]: http://daringfireball.net/projects/markdown/basics
-[5]: http://daringfireball.net/projects/markdown/syntax
-[6]: http://kune.fr/wp-content/uploads/2013/10/ghost-blog.jpg
+After performing these steps, the value provides the magnitude of the negative number. In this example, we get a magnitude of 7, so the original bit pattern 11111001 is known to be −7.
