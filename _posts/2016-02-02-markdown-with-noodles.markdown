@@ -13,7 +13,7 @@ A bit, short for binary digit, is a binary valued variable. The two possible val
 Everything in computing is based upon combinations of bits
 bits can be either 1 or 0. Since a single bit can represent only two values, we must group bits together to represent a wider range of numbers.
 
-                        0 0 0 1 0 0 1 1
+    0 0 0 1 0 0 1 1
 
 When bits are grouped, there are a variety of methods for interpreting them collectively. Each method of interpretation is called a bit model.
 
@@ -21,9 +21,7 @@ When bits are grouped, there are a variety of methods for interpreting them coll
 
 The simplest bit model is for nonnegative whole numbers. In this case, each bit represents a nonnegative integer power of 2. The place values of the bits are as follows:
 
-    example bit value		 0	 0	 0	 1	 0	 0	 1	 1
-    place value             27   26	 25	 24	 23	 22	 21	 20
-    place value (base 10) 	128	 64	 32	 16	 8	 4	 2	 1
+![alt text](/assets/images/blogImages/Bit models/1.png)
 
 The total value of the number represented is found by adding up the place values of all the bits. In the example above, the value represented in the 8 bits (1 byte) is 19:
 
@@ -31,9 +29,7 @@ The total value of the number represented is found by adding up the place values
 
 Given 8 bits, it is possible to store whole numbers in value up to
 
-    7
-    ∑2i = 28 − 1= 255
-    i=0
+![alt text](/assets/images/blogImages/Bit models/2.png)
 
 or in the range 0 to 255.
 
@@ -42,9 +38,7 @@ The significance of bits can be thought of as which digits most change the numbe
 In general, storing numbers only within the range 0–255 is not terribly useful. Some things do use this range, such as graphical display pixel values, but obviously a wider range is needed for most computations. This is accomplished by grouping more bits together. For example, by grouping 4 bytes (32 bits) together, the magnitude-only bit model can represent whole numbers in value up to
 
 
-    31
-    ∑ 2i = 232 − 1= 4,294,967,295
-    i=0
+![alt text](/assets/images/blogImages/Bit models/3.png)
 
 or in the range 0–4,294,967,295.
 
@@ -54,9 +48,7 @@ In C, several data types use the magnitude-only bit model. An unsigned char is a
 
 In the case where signed whole numbers are desired, a common practice is to allocate the highest order bit to be the sign bit. This is called the sign-magnitude model:
 
-    example bit value            1      0 	0 	1 	0 	0 	1 	1
-    place value			        sign 	26	25	24	23	22	21	20 
-    place value (base 10) 	   + or − 	64	32 	16 	8 	4	2	1
+![alt text](/assets/images/blogImages/Bit models/4.png)
 
 By common convention, a value of 0 in the sign bit indicates a positive number, while a value of 1 in the sign bit indicates a negative number.
 
@@ -72,14 +64,10 @@ Using the two’s complement bit model, positive integers (and zero) are represe
 
 For example, to represent −7, we proceed through the following steps:
 
-    positive value(+7)		0 	0	0	0	0 	1 	1 	1
-    invert all bits 		1	1 	1 	1 	1	0	0	0
-    add 1                   1 	1 	1	1	1 	0 	0	1
+![alt text](/assets/images/blogImages/Bit models/5.png)
 
 The process of adding 1 is carried out exactly as described in the previous sections. Based on our example, we find that the two’s complement bit representation for −7, using 8 bits, is 11111001. When a two’s complement number has a 1 in the highest bit, it indicates that the number is negative. To find the value, we perform the same steps:
 
-    unknown value (+?)		1 	1	1	1	1 	0 	0 	1
-    invert all bits 		0	0 	0 	0 	0	1	1	0
-    add 1                   0 	0 	0	0	0 	1 	1	1
+![alt text](/assets/images/blogImages/Bit models/6.png)
 
 After performing these steps, the value provides the magnitude of the negative number. In this example, we get a magnitude of 7, so the original bit pattern 11111001 is known to be −7.
