@@ -9,7 +9,7 @@ img { width: 50%; margin: 0 auto; display: block; }
 
 ![Profile Image]({{ site.url }}/{{ site.picture }})
 
-<h3>Who am I</h3>
+<h3><center>Who am I</center></h3>
 
 <p>I am trying to do my best about creativity in my Design's. I always work with my clients , by that I mean in my clients project, neither my client or me, we are not alone. We are together, that is why we should work together for accomplish. I will give them my talent and skills, as long as they include them in these projects. Giving their opinions and their suggestions with mutual respect. That is how I work, I am open for any idea and job offers ( volunteers also ) as long as I'm available. That is who I am, thanks.</p>
 
