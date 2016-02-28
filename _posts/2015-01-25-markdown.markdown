@@ -51,7 +51,7 @@ Let's give an absurd example so that it will be more permament. So we have a fri
 
 So according to this graph our friend will get sick or not. It is a binary example. There is just two probabalities. This is a classification problem. Let's see the expected result ...
 
-![alt text](https://github.com/BedirT/BedirT.github.io/blob/master/assets/images/blogImages/Neurol%20Networks%20Starter/graphs6.png)
+![alt text](/assets/images/blogImages/Neurol%20Networks%20Starter/graphs6.png)
 
 (He will probably get sick, according to our prediction.) 
 
